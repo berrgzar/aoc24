@@ -10,7 +10,8 @@ signed main(){
 
 	vector<string> s;
 	string t;
-    while (getline(cin, t)) {
+    
+	while (getline(cin, t)) {
 	    s.push_back(t);
 	}
 
