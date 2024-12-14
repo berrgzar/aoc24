@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+// I just saw a pattern from 115 => 216 >= 317 and was convinced it would work :skul: 
+#define int long long
+const int mod = 1e9+7;
+
+int add(int x, int y){
+    return (x+y)%mod;
+}
+
+int mul(int x, int y){
+    return (x*y)%mod;
+}
+
+signed main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    int k = 500;
+
+    int n = 103, m = 101;
+
+    vector<int> ans(4, 0);
+    vector<array<int, 4>> g;
+    while(k--){
+        int x, y; cin >> y >> x;
+
+        int a, b; cin >> b >> a;
+
+        x+=115*a; y+=115*b;
+        x %=n; x+=n; x%=n;
+        y %=m; y+=m; y%=m;
+        g.push_back({x, y, a, b});
+
+
+    }
+    int  f = 1000, ge=115;;
+    while(f--){
+        vector<vector<char>> all(n, vector<char>(m, ' '));
+        cout<<"------------"<<ge<<"-----------\n";
+        for(auto &[x, y, a, b]: g){
+            all[x][y]='#';
+            x+=a*101; y+=b*101;
+            x %=n; x+=n; x%=n;
+            y %=m; y+=m; y%=m;
+        }
+
+        for(auto i: all){
+            for(auto l: i) cout<<l;
+                cout<<"\n";
+        }
+        for(int i=0; i<10; i++) cout<<"\n";
+            ge+=101;
+    }
+    
+    cout<<ans[0]*ans[1]*ans[2]*ans[3];   
+}
+
+
